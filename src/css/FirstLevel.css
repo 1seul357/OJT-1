@@ -1,0 +1,18 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.box {
+    width: 80%;
+    height: 75%;
+    background-color: #ffffffaf;
+    border-radius: 2rem;
+    flex-direction: column;
+}
+.mainText {
+    font-size: 1.7rem;
+    line-height: 24px;
+    font-weight: 400;
+}
