@@ -2,7 +2,7 @@ import "../css/Modal.css";
 import Chicken from "../assets/Chicken.png";
 import Frog from "../assets/Frog.png";
 
-export default class AnswerModal {
+export default class Modal {
     constructor(data) {
         this.data = data;
         this.modalWrapper = document.createElement("section");

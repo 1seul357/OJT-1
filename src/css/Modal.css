@@ -10,6 +10,9 @@
     border-radius: 1rem;
     background-color: white;
     box-shadow: 3px 5px 5px 4px rgba(128, 128, 128, 0.784);
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 .modalImg {

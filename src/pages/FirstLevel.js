@@ -58,11 +58,15 @@ export default class FirstLevel {
       button.innerText = "Next"
       button.addEventListener('click', function () {
         var flag = 0;
-        answer.forEach((ans, i) => {
-          if (ans != 0 && ans != 1 && ans != 6) {
-            flag = 1;
-          }
-        })
+        if (answer.length === 3) {
+          answer.forEach((ans, i) => {
+            if (ans != 0 && ans != 1 && ans != 6) {
+              flag = 1;
+            }
+          })
+        } else {
+          flag = 1;
+        }
         if (flag == 0) {
           const data = {
             answer: 0,
