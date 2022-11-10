@@ -1,6 +1,6 @@
 import "../css/Modal.css";
-import Chicken from "../assets/Chicken.png";
-import Frog from "../assets/Frog.png";
+import O from "../assets/O.png";
+import X from "../assets/X.png";
 
 export default class Modal {
     constructor(data) {
@@ -18,7 +18,7 @@ export default class Modal {
 
         const img = document.createElement("img");
         img.className = "modalImg";
-        img.src = this.data.answer == 0 ? Frog : Chicken;
+        img.src = this.data.answer == 0 ? O : X;
         modalWrapper.appendChild(img);
 
         const info = document.createElement("h2");
