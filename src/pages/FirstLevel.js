@@ -60,14 +60,14 @@ export default class FirstLevel {
         var flag = 0;
         if (answer.length === 3) {
           answer.forEach((ans, i) => {
-            if (ans != 0 && ans != 1 && ans != 6) {
+            if (ans !== 0 && ans !== 1 && ans !== 6) {
               flag = 1;
             }
           })
         } else {
           flag = 1;
         }
-        if (flag == 0) {
+        if (flag === 0) {
           const data = {
             answer: 0,
             info: "정답입니다!",
