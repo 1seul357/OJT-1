@@ -3,13 +3,38 @@
     height: 80%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     flex-direction: column;
     background-color: #ffffffa9;
     border-radius: 2rem;
 }
 
+.textBox{
+    background-color: #ffffff;
+    width: 40rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 5px 1px grey;
+}
+
 .mainText {
-    font-size: 1.8rem;
-    line-height: 24px;
+    font-size: 1.6rem;
+    line-height: 10px;
     font-weight: 400;
+}
+
+.imgBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem;
+}
+
+img {
+    margin: 1rem;
+}
+
+img:hover {
+    transform:scale(1.1);
+    cursor: pointer;
 }

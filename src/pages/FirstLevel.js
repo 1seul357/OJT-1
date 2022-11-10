@@ -23,11 +23,22 @@ export default class FirstLevel {
       const text = document.createElement("h3");
       text.className = "mainText"
       text.innerText = "한 글자인 동물을 모두 선택해주세요.";
-      this.section.appendChild(text);
 
-      const imgTag = document.createElement('img');
-      imgTag.src = Chick;
+      const textBox = document.createElement("div");
+      textBox.className = "textBox"
+      textBox.appendChild(text);
+      this.section.appendChild(textBox);
 
-      this.section.appendChild(imgTag);
+      const imgArray = [Bear, Deer, Koala, Peng, Elephant, Fox, Sheep, Chick];
+      const box = document.createElement("section");
+      box.className = "imgBox";
+
+      imgArray.forEach((a, i) => {
+        const imgTag = document.createElement('img');
+        imgTag.src = a;
+        box.appendChild(imgTag);
+      });
+
+      this.section.appendChild(box);
     }
   }
