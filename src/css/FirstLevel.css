@@ -9,14 +9,6 @@
     border-radius: 2rem;
 }
 
-.textBox{
-    background-color: #ffffff;
-    width: 40rem;
-    height: 3.5rem;
-    border-radius: 1rem;
-    box-shadow: 3px 3px 5px 1px grey;
-}
-
 .mainText {
     font-size: 1.6rem;
     line-height: 10px;
