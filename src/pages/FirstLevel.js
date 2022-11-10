@@ -30,7 +30,7 @@ export default class FirstLevel {
       textBox.appendChild(text);
       this.section.appendChild(textBox);
 
-      const imgArray = [Bear, Deer, Koala, Peng, Elephant, Fox, Sheep, Chick];
+      const imgArray = [Peng, Koala, Bear, Deer, Elephant, Fox, Sheep, Chick];
       const box = document.createElement("section");
       box.className = "imgBox";
 
@@ -60,7 +60,7 @@ export default class FirstLevel {
         var flag = 0;
         if (answer.length === 3) {
           answer.forEach((ans, i) => {
-            if (ans !== 0 && ans !== 1 && ans !== 6) {
+            if (ans !== 2 && ans !== 3 && ans !== 6) {
               flag = 1;
             }
           })
