@@ -1,4 +1,5 @@
 import '../css/FirstLevel.css';
+import Modal from '../components/Modal';
 import Bear from "../assets/Bear.png";
 import Chick from "../assets/Chick.png";
 import Deer from "../assets/Deer.png";
@@ -63,9 +64,19 @@ export default class FirstLevel {
           }
         })
         if (flag == 0) {
-          alert("맞았습니다");
+          const data = {
+            answer: 0,
+            info: "정답입니다!",
+            message: "한 글자인 동물은 양, 곰, 말 모두 세 마리입니다."
+          }
+          new Modal(data);
         } else {
-          alert("틀렸습니다");
+          const data = {
+            answer: 1,
+            info: "틀렸습니다!",
+            message: "세 마리의 동물을 선택해야 합니다."
+          }
+          new Modal(data);
         }
       });
       this.section.appendChild(button);
