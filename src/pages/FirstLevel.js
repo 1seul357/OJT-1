@@ -33,11 +33,40 @@ export default class FirstLevel {
       const box = document.createElement("section");
       box.className = "imgBox";
 
-      imgArray.forEach((a, i) => {
+      const answer = [];
+
+      imgArray.forEach((src, i) => {
         const imgTag = document.createElement('img');
-        imgTag.src = a;
+        imgTag.src = src;
+        imgTag.addEventListener('click', function () {
+          if (answer.includes(i)) {
+              const index = answer.indexOf(i);
+              if (index > -1) {
+                answer.splice(index, 1);
+            }
+          } else {
+            answer.push(i);
+          }
+        })
         box.appendChild(imgTag);
       });
+
+      const button = document.createElement("button");
+      button.innerText = "Next"
+      button.addEventListener('click', function () {
+        var flag = 0;
+        answer.forEach((ans, i) => {
+          if (ans != 0 && ans != 1 && ans != 6) {
+            flag = 1;
+          }
+        })
+        if (flag == 0) {
+          alert("맞았습니다");
+        } else {
+          alert("틀렸습니다");
+        }
+      });
+      this.section.appendChild(button);
 
       this.section.appendChild(box);
     }
