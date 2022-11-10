@@ -42,10 +42,12 @@ export default class FirstLevel {
           if (answer.includes(i)) {
               const index = answer.indexOf(i);
               if (index > -1) {
+                imgTag.className = "";
                 answer.splice(index, 1);
             }
           } else {
             answer.push(i);
+            imgTag.className = "selectedImg";
           }
         })
         box.appendChild(imgTag);
