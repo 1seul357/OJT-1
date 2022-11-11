@@ -12,14 +12,14 @@ import Sheep from "../assets/Sheep.png"
 
 export default class FirstLevel {
     constructor({ $target }) {
-      this.section = document.createElement("section");
-      this.section.className = "firstSection";
-      $target.appendChild(this.section);
+      this.main = document.createElement("main");
+      this.main.className = "firstSection";
       this.render();
+      $target.appendChild(this.main);
     }
   
     render() {
-      this.section.innerHTML = "";
+      this.main.innerHTML = "";
 
       const text = document.createElement("h3");
       text.className = "mainText"
@@ -28,28 +28,19 @@ export default class FirstLevel {
       const textBox = document.createElement("div");
       textBox.className = "textBox"
       textBox.appendChild(text);
-      this.section.appendChild(textBox);
+      this.main.appendChild(textBox);
 
+      const problemAnswer = [2, 3, 6];
       const imgArray = [Peng, Koala, Bear, Deer, Elephant, Fox, Sheep, Chick];
       const box = document.createElement("section");
       box.className = "imgBox";
-
-      const answer = [];
-
+    
       imgArray.forEach((src, i) => {
         const imgTag = document.createElement('img');
         imgTag.src = src;
         imgTag.addEventListener('click', function () {
-          if (answer.includes(i)) {
-              const index = answer.indexOf(i);
-              if (index > -1) {
-                imgTag.className = "";
-                answer.splice(index, 1);
-            }
-          } else {
-            answer.push(i);
-            imgTag.className = "selectedImg";
-          }
+          imgTag.dataset.index = i
+          imgTag.className = imgTag.className ? "" : "selectedImg";
         })
         box.appendChild(imgTag);
       });
@@ -57,34 +48,22 @@ export default class FirstLevel {
       const button = document.createElement("button");
       button.innerText = "Next"
       button.addEventListener('click', function () {
-        var flag = 0;
-        if (answer.length === 3) {
-          answer.forEach((ans, i) => {
-            if (ans !== 2 && ans !== 3 && ans !== 6) {
-              flag = 1;
-            }
-          })
-        } else {
-          flag = 1;
+        const answer = [...box.querySelectorAll(".selectedImg")].map(el => Number(el.dataset.index))
+        const isAnswer = answer.length === problemAnswer.length && answer.every(ans=>(problemAnswer.includes(ans)))
+        const data = {
+          answer: 1,
+          info: "틀렸습니다!",
+          message: "세 마리의 동물을 선택해야 합니다."
         }
-        if (flag === 0) {
-          const data = {
-            answer: 0,
-            info: "정답입니다!",
-            message: "한 글자인 동물은 양, 곰, 말 모두 세 마리입니다."
-          }
-          new Modal(data);
-        } else {
-          const data = {
-            answer: 1,
-            info: "틀렸습니다!",
-            message: "세 마리의 동물을 선택해야 합니다."
-          }
-          new Modal(data);
-        }
+        if (isAnswer) {
+            data.answer= 0;
+            data.info= "정답입니다!";
+            data.message= "한 글자인 동물은 양, 곰, 말 모두 세 마리입니다."
+        } 
+        new Modal(data);
       });
-      this.section.appendChild(button);
 
-      this.section.appendChild(box);
+      this.main.appendChild(button);
+      this.main.appendChild(box);
     }
   }
