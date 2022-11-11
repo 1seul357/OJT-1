@@ -28,6 +28,12 @@ export default class Modal {
         message.innerText = this.data.message;
         message.className = "modalMessage";
 
+        if (this.data.answer === 1) {
+            setTimeout(() => {
+                this.modal.remove();
+            }, 4000);
+        }
+
         img.onload = function() {
             modalWrapper.appendChild(img);
             modalWrapper.appendChild(info);
