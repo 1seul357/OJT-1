@@ -33,7 +33,7 @@
 
 .container:hover {
     transform: scale(1.1);
-    cursor: pointer;
+    cursor: url(../assets/Pencil.png), pointer;
 }
 
 .selectedContainer {
@@ -45,5 +45,5 @@
 
 .selectedContainer:hover {
     transform: scale(1.1);
-    cursor: pointer;
+    cursor: url(../assets/Eraser.png), pointer;
 }

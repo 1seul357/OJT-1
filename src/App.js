@@ -6,7 +6,7 @@ import '../style.css';
 export default class App {
   constructor($target) {
     $target.innerHTML = ''
-    const firstLevel = new FirstLevel({
+    const firstLevel = new SecondLevel({
       $target
     });
   }
