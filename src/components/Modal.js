@@ -3,7 +3,8 @@ import O from "../assets/O.png";
 import X from "../assets/X.png";
 
 export default class Modal {
-    constructor(data) {
+    constructor(data, loadPage) {
+        this.loadPage = loadPage
         this.data = data;
         this.modal = document.createElement("section");
         this.modal.className = "modal";
@@ -12,6 +13,7 @@ export default class Modal {
     }
 
     render() {
+        const loadPage = this.loadPage;
         const modalWrapper = document.createElement("section");
         modalWrapper.className = "modalWrapper";
         this.modal.appendChild(modalWrapper);
@@ -28,11 +30,12 @@ export default class Modal {
         message.innerText = this.data.message;
         message.className = "modalMessage";
 
-        if (this.data.answer === 1) {
-            setTimeout(() => {
-                this.modal.remove();
-            }, 4000);
-        }
+        setTimeout(() => {
+            this.modal.remove();
+            if (this.data.answer === 0) {
+                loadPage()
+            }
+        }, 4000);
 
         img.onload = function() {
             modalWrapper.appendChild(img);

@@ -1,4 +1,5 @@
 import '../css/FirstLevel.css';
+import SecondLevel from './SecondLevel';
 import Modal from '../components/Modal';
 import Bear from "../assets/Bear.png";
 import Chick from "../assets/Chick.png";
@@ -14,13 +15,14 @@ export default class FirstLevel {
     constructor({ $target }) {
       this.section = document.createElement("section");
       this.section.className = "firstSection";
+      this.target = $target
       this.render();
       $target.appendChild(this.section);
     }
-  
-    render() {
-      this.section.innerHTML = "";
 
+    render() {
+      const target = this.target;
+      this.section.innerHTML = "";
       const text = document.createElement("h3");
       text.className = "mainText";
       text.innerText = "한 글자인 동물을 모두 선택해주세요.";
@@ -45,6 +47,13 @@ export default class FirstLevel {
         box.appendChild(imgTag);
       });
 
+      const loadPage = () => {
+        this.section.remove()
+        const secondLevel = new SecondLevel({
+          target
+        });
+      }
+
       const button = document.createElement("button");
       button.innerText = "Next";
       button.addEventListener('click', function () {
@@ -60,10 +69,11 @@ export default class FirstLevel {
             data.info= "정답입니다!";
             data.message= "한 글자인 동물은 양, 곰, 말 모두 세 마리입니다."
         } 
-        new Modal(data);
+        new Modal(data, loadPage);
       });
 
       this.section.appendChild(button);
       this.section.appendChild(box);
+      
     }
   }
