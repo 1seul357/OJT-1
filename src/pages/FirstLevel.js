@@ -12,23 +12,23 @@ import Sheep from "../assets/Sheep.png"
 
 export default class FirstLevel {
     constructor({ $target }) {
-      this.main = document.createElement("main");
-      this.main.className = "firstSection";
+      this.section = document.createElement("section");
+      this.section.className = "firstSection";
       this.render();
-      $target.appendChild(this.main);
+      $target.appendChild(this.section);
     }
   
     render() {
-      this.main.innerHTML = "";
+      this.section.innerHTML = "";
 
       const text = document.createElement("h3");
-      text.className = "mainText"
+      text.className = "mainText";
       text.innerText = "한 글자인 동물을 모두 선택해주세요.";
 
       const textBox = document.createElement("div");
-      textBox.className = "textBox"
+      textBox.className = "textBox";
       textBox.appendChild(text);
-      this.main.appendChild(textBox);
+      this.section.appendChild(textBox);
 
       const problemAnswer = [2, 3, 6];
       const imgArray = [Peng, Koala, Bear, Deer, Elephant, Fox, Sheep, Chick];
@@ -39,17 +39,17 @@ export default class FirstLevel {
         const imgTag = document.createElement('img');
         imgTag.src = src;
         imgTag.addEventListener('click', function () {
-          imgTag.dataset.index = i
-          imgTag.className = imgTag.className ? "" : "selectedImg";
+          imgTag.dataset.index = i;
+          imgTag.className = imgTag.className ? "" : "selectedImg"; // className이 있으면 "", 없으면 selectedImg로 설정해서 이미지의 opacity 조절
         })
         box.appendChild(imgTag);
       });
 
       const button = document.createElement("button");
-      button.innerText = "Next"
+      button.innerText = "Next";
       button.addEventListener('click', function () {
-        const answer = [...box.querySelectorAll(".selectedImg")].map(el => Number(el.dataset.index))
-        const isAnswer = answer.length === problemAnswer.length && answer.every(ans=>(problemAnswer.includes(ans)))
+        const answer = [...box.querySelectorAll(".selectedImg")].map(el => Number(el.dataset.index));
+        const isAnswer = answer.length === problemAnswer.length && answer.every(ans=>(problemAnswer.includes(ans)));  // 사용자가 선택한 문항 수와 정답 수가 같고, 모든 값 (2, 3, 6)이 같으면 true
         const data = {
           answer: 1,
           info: "틀렸습니다!",
@@ -63,7 +63,7 @@ export default class FirstLevel {
         new Modal(data);
       });
 
-      this.main.appendChild(button);
-      this.main.appendChild(box);
+      this.section.appendChild(button);
+      this.section.appendChild(box);
     }
   }
