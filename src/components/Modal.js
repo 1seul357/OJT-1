@@ -30,17 +30,22 @@ export default class Modal {
         message.innerText = this.data.message;
         message.className = "modalMessage";
 
-        setTimeout(() => {
-            this.modal.remove();
-            if (this.data.answer === 0) {
-                loadPage()
-            }
-        }, 4000);
+        
 
         img.onload = function() {
             modalWrapper.appendChild(img);
             modalWrapper.appendChild(info);
             modalWrapper.appendChild(message);
         };
+
+        return new Promise(resolve=>{
+            setTimeout(() => {
+                this.modal.remove();
+                // if (this.data.answer === 0) {
+                //     loadPage()
+                // }
+                resolve();
+            }, 4000);
+        })
     }
 } 

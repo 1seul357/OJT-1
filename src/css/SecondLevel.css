@@ -15,3 +15,35 @@
     font-weight: 400;
     text-align: center;
 }
+
+.box {
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 8rem;
+    height: 8rem;
+    background-color: white;
+    border: solid 0.01rem;
+}
+
+.container:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.selectedContainer {
+    width: 8rem;
+    height: 8rem;
+    background-color: rgb(230, 84, 84);
+    border: solid 0.01rem;
+}
+
+.selectedContainer:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
