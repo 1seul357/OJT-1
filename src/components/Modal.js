@@ -4,8 +4,8 @@ import X from "../assets/X.png";
 
 export default class Modal {
     constructor(data, loadPage) {
-        this.loadPage = loadPage
         this.data = data;
+        this.loadPage = loadPage;
         this.modal = document.createElement("section");
         this.modal.className = "modal";
         this.render();
@@ -30,8 +30,6 @@ export default class Modal {
         message.innerText = this.data.message;
         message.className = "modalMessage";
 
-        
-
         img.onload = function() {
             modalWrapper.appendChild(img);
             modalWrapper.appendChild(info);
@@ -41,9 +39,14 @@ export default class Modal {
         return new Promise(resolve=>{
             setTimeout(() => {
                 this.modal.remove();
-                // if (this.data.answer === 0) {
-                //     loadPage()
-                // }
+                if (this.data.answer === 0) {
+                    if (this.data.level === 1) {
+                        loadPage(2);
+                    }
+                    if (this.data.level === 2) {
+                        loadPage(3);
+                    }
+                }
                 resolve();
             }, 4000);
         })
