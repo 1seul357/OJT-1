@@ -19,9 +19,11 @@
 .flexContainer {
   width: 80%;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.box {
+.boxContainer {
   display: grid;
   grid-template-columns: 7rem 7rem 7rem;
 }
@@ -32,8 +34,7 @@
 }
 
 .circleBox {
-  width: 70%;
+  width: 35%;
   height: 100%;
-  margin-right: 3rem;
   background-color: #f15e08;
 }

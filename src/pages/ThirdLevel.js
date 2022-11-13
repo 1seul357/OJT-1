@@ -35,7 +35,7 @@ export default function ThirdLevel({ $target, loadPage }) {
     this.section.appendChild(container);
 
     const box = document.createElement("div");
-    box.className = "box";
+    box.className = "boxContainer";
     const circleArray = [
       Red,
       Pink,
