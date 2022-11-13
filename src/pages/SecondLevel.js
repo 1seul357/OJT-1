@@ -50,8 +50,8 @@ export default function SecondLevel({ $target, loadPage }) {
         data.info = "정답입니다!";
         data.message = "다음 단계로 넘어갈 때까지 기다려주세요.";
       }
-      const modal = await new Modal(data, loadPage);
-      modal.render();
+      const modal = new Modal(data, loadPage);
+      await modal.render();
     });
 
     this.section.appendChild(button);

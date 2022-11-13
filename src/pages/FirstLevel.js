@@ -63,8 +63,8 @@ export default function FirstLevel({ $target, loadPage }) {
         data.info = "정답입니다!";
         data.message = "한 글자인 동물은 양, 곰, 말 모두 세 마리입니다.";
       }
-      const modal = await new Modal(data, loadPage);
-      modal.render();
+      const modal = new Modal(data, loadPage);
+      await modal.render();
     });
 
     this.section.appendChild(button);
