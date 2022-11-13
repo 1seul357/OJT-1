@@ -1,0 +1,39 @@
+.thirdSection {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #ffffffad;
+  border-radius: 2rem;
+}
+
+.mainText {
+  font-size: 1.6rem;
+  line-height: 10px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.flexContainer {
+  width: 80%;
+  display: flex;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 7rem 7rem 7rem;
+}
+
+.circle {
+  width: 4.5rem;
+  margin: 1rem;
+}
+
+.circleBox {
+  width: 70%;
+  height: 100%;
+  margin-right: 3rem;
+  background-color: #f15e08;
+}
