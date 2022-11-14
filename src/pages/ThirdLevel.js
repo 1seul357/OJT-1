@@ -22,7 +22,7 @@ export default function ThirdLevel({ $target, loadPage }) {
 
     const text = document.createElement("h3");
     text.className = "mainText";
-    text.innerText = "5개의 원을 드래그해서 박스에 담아주세요.";
+    text.innerText = "5개 이상의 원을 드래그해서 박스에 담아주세요.";
     this.section.appendChild(text);
 
     const textBox = document.createElement("div");
@@ -55,20 +55,43 @@ export default function ThirdLevel({ $target, loadPage }) {
       const circle = document.createElement("img");
       circle.src = src;
       circle.className = "circle";
-      circle.addEventListener("drag", function () {
+      circle.addEventListener("drag", (e) => {
+        circle.classList.add("dragging");
         circle.dataset.index = i;
       });
       box.appendChild(circle);
     });
     container.appendChild(box);
-    container.appendChild(circleBox);
 
-    circleBox.addEventListener("dragenter", (e) => {
-      console.log("드래그");
+    circleBox.addEventListener("dragover", (e) => {
+      e.preventDefault();
     });
+
+    circleBox.addEventListener("drop", (e) => {
+      e.preventDefault();
+      const draggable = document.querySelector(".dragging");
+      circleBox.appendChild(draggable);
+    });
+    container.appendChild(circleBox);
 
     const button = document.createElement("button");
     button.innerText = "Next";
+    button.addEventListener("click", async () => {
+      const count = document.querySelectorAll(".dragging");
+      const data = {
+        level: 3,
+        answer: 1,
+        info: "틀렸습니다!",
+        message: "박스에 원을 5개 이상 담아주세요."
+      }
+      if (count.length >= 5) {
+        data.answer = 0;
+        data.info = "정답입니다!";
+        data.message = "축하합니다. 모든 단계를 완료했습니다.";
+      }
+      const modal = new Modal(data, loadPage);
+      await modal.render();
+    })
 
     this.section.appendChild(button);
   };
