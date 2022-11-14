@@ -1,0 +1,26 @@
+.section {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #ffffffad;
+    border-radius: 2rem;
+  }
+
+.textBox{
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    margin-top: 0.5rem;
+    width: 50%;
+    height: 3.5rem;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 5px 1px grey;
+}
+  
+.text{
+    text-align: center;
+    color: #f15e08;
+}

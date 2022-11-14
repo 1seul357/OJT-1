@@ -1,5 +1,7 @@
 import "../css/ThirdLevel.css";
+import "../css/Container.css";
 import Modal from "../components/Modal";
+import Container from "../components/Container";
 import Blue from "../assets/Blue.png";
 import Green from "../assets/Green.png";
 import DarkGreen from "../assets/DarkGreen.png";
@@ -12,7 +14,7 @@ import SkyBlue from "../assets/SkyBlue.png";
 
 export default function ThirdLevel({ $target, loadPage }) {
   this.section = document.createElement("section");
-  this.section.className = "thirdSection";
+  this.section.className = "section";
   this.loadPage = loadPage;
   $target.appendChild(this.section);
 
@@ -20,15 +22,11 @@ export default function ThirdLevel({ $target, loadPage }) {
     this.section.innerHTML = "";
     const loadPage = this.loadPage;
 
-    const text = document.createElement("h3");
-    text.className = "mainText";
-    text.innerText = "3개의 원을 드래그해서 박스에 담아주세요.";
-    this.section.appendChild(text);
-
-    const textBox = document.createElement("div");
-    textBox.className = "textBox";
-    textBox.appendChild(text);
-    this.section.appendChild(textBox);
+    const data = {
+      text: "의 원을 드래그해서 박스에 담아주세요.",
+      text2: "3개"
+    };
+    new Container(data);
 
     const container = document.createElement("div");
     container.className = "flexContainer";

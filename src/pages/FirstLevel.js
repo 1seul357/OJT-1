@@ -1,5 +1,7 @@
 import "../css/FirstLevel.css";
+import "../css/Container.css";
 import Modal from "../components/Modal";
+import Container from "../components/Container";
 import Bear from "../assets/Bear.png";
 import Chick from "../assets/Chick.png";
 import Deer from "../assets/Deer.png";
@@ -11,22 +13,18 @@ import Sheep from "../assets/Sheep.png";
 
 export default function FirstLevel({ $target, loadPage }) {
   this.section = document.createElement("section");
-  this.section.className = "firstSection";
+  this.section.className = "section";
   this.loadPage = loadPage;
   $target.appendChild(this.section);
 
   this.render = () => {
     this.section.innerHTML = "";
     const loadPage = this.loadPage;
-
-    const text = document.createElement("h3");
-    text.className = "mainText";
-    text.innerText = "한 글자인 동물을 모두 선택해주세요.";
-
-    const textBox = document.createElement("div");
-    textBox.className = "textBox";
-    textBox.appendChild(text);
-    this.section.appendChild(textBox);
+    const data = {
+      text: "인 동물을 모두 선택해주세요.",
+      text2: "한 글자"
+    }
+    new Container(data);
 
     const problemAnswer = [2, 3, 6];
     const imgArray = [Peng, Koala, Bear, Deer, Elephant, Fox, Sheep, Chick];

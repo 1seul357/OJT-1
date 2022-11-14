@@ -1,9 +1,10 @@
 import "../css/SecondLevel.css";
 import Modal from "../components/Modal";
+import Container from "../components/Container";
 
 export default function SecondLevel({ $target, loadPage }) {
   this.section = document.createElement("section");
-  this.section.className = "secondSection";
+  this.section.className = "section";
   this.loadPage = loadPage;
   $target.appendChild(this.section);
 
@@ -11,15 +12,11 @@ export default function SecondLevel({ $target, loadPage }) {
     this.section.innerHTML = "";
     const loadPage = this.loadPage;
 
-    const text = document.createElement("h3");
-    text.className = "mainText";
-    text.innerText = "네모 칸을 7개 이상 색칠해주세요.";
-    this.section.appendChild(text);
-
-    const textBox = document.createElement("div");
-    textBox.className = "textBox";
-    textBox.appendChild(text);
-    this.section.appendChild(textBox);
+    const data = {
+      text: "의 네모 칸을 색칠해주세요.",
+      text2: "7개 이상"
+    }
+    new Container(data);
 
     const box = document.createElement("section");
     box.className = "box";
