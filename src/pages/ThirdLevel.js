@@ -55,28 +55,28 @@ export default function ThirdLevel({ $target, loadPage }) {
       const circle = document.createElement("img");
       circle.src = src;
       circle.className = "circle";
-      circle.addEventListener("drag", (e) => {
+      circle.addEventListener("drag", function () {
         circle.classList.add("dragging");
         circle.dataset.index = i;
       });
       box.appendChild(circle);
+      container.appendChild(box);
       circle.onload = function () {
-        container.appendChild(box);
         container.appendChild(circleBox);
       }
     });
 
-    circleBox.addEventListener("dragover", (e) => {
+    circleBox.addEventListener("dragover", function (e) {
       e.preventDefault();
     });
 
-    circleBox.addEventListener("drop", (e) => {
+    circleBox.addEventListener("drop", function (e) {
       e.preventDefault();
       const count = document.querySelectorAll(".dropCircle");
       if (count.length <= 2) {
-        const draggable = document.querySelector(".dragging");
-        draggable.className = "dropCircle"
-        circleBox.appendChild(draggable);
+        const dropCircle = document.querySelector(".dragging");
+        dropCircle.className = "dropCircle"
+        circleBox.appendChild(dropCircle);
       }
     });
 
