@@ -85,7 +85,7 @@ export default function ThirdLevel({ $target, loadPage }) {
     button.addEventListener("click", async function () {
       const count = document.querySelectorAll(".dropCircle");
       const data = {
-        level: 3,
+        level: 4,
         answer: 1,
         info: "틀렸습니다!",
         message: "박스에 원을 3개만 담아주세요."
@@ -93,10 +93,11 @@ export default function ThirdLevel({ $target, loadPage }) {
       if (count.length === 3) {
         data.answer = 0;
         data.info = "정답입니다!";
-        data.message = "축하합니다. 모든 단계를 완료했습니다.";
+        data.message = "모든 단계를 완료했습니다.";
       }
-      const modal = new Modal(data, loadPage);
+      const modal = new Modal(data);
       await modal.render();
+      loadPage();
     })
 
     this.section.appendChild(button);

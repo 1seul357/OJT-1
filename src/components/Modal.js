@@ -3,9 +3,8 @@ import O from "../assets/O.png";
 import X from "../assets/X.png";
 
 export default class Modal {
-  constructor(data, loadPage) {
+  constructor(data) {
     this.data = data;
-    this.loadPage = loadPage;
     this.modal = document.createElement("section");
     this.modal.className = "modal";
     this.render();
@@ -13,7 +12,6 @@ export default class Modal {
   }
 
   render() {
-    const loadPage = this.loadPage;
     const modalWrapper = document.createElement("section");
     modalWrapper.className = "modalWrapper";
     this.modal.appendChild(modalWrapper);
@@ -40,14 +38,9 @@ export default class Modal {
       setTimeout(() => {
         this.modal.remove();
         if (this.data.answer === 0) {
-          if (this.data.level === 1) {
-            resolve(loadPage(2));
-          }
-          if (this.data.level === 2) {
-            resolve(loadPage(3));
-          }
+          resolve();
         }
-      }, 4000);
+      }, 2000);
     });
   }
 }

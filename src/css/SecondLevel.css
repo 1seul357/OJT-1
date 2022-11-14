@@ -17,11 +17,8 @@
 }
 
 .box {
-  display: flex;
-  width: 90%;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 8rem 8rem 8rem 8rem 8rem 8rem 8rem;
 }
 
 .container {
@@ -34,17 +31,18 @@
 
 .container:hover {
   transform: scale(1.1);
-  cursor: url(../assets/Pencil.png), pointer;
+  cursor: url(../assets/Pencil.png) 30 100, pointer;
 }
 
 .selectedContainer {
   width: 8rem;
   height: 8rem;
+  margin-bottom: 0.5rem;
   background-color: rgb(230, 84, 84);
   border: solid 0.01rem;
 }
 
 .selectedContainer:hover {
   transform: scale(1.1);
-  cursor: url(../assets/Eraser.png), pointer;
+  cursor: url(../assets/Eraser.png) 30 100, pointer;
 }

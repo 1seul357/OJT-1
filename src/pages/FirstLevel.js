@@ -53,7 +53,6 @@ export default function FirstLevel({ $target, loadPage }) {
         answer.length === problemAnswer.length &&
         answer.every((ans) => problemAnswer.includes(ans)); // 사용자가 선택한 문항 수와 정답 수가 같고, 모든 값 (2, 3, 6)이 같으면 true
       const data = {
-        level: 1,
         answer: 1,
         info: "틀렸습니다!",
         message: "세 마리의 동물을 선택해야 합니다.",
@@ -63,8 +62,9 @@ export default function FirstLevel({ $target, loadPage }) {
         data.info = "정답입니다!";
         data.message = "한 글자인 동물은 양, 곰, 말 모두 세 마리입니다.";
       }
-      const modal = new Modal(data, loadPage);
+      const modal = new Modal(data);
       await modal.render();
+      loadPage();
     });
 
     this.section.appendChild(button);
