@@ -22,7 +22,7 @@ export default function ThirdLevel({ $target, loadPage }) {
 
     const text = document.createElement("h3");
     text.className = "mainText";
-    text.innerText = "5개 이상의 원을 드래그해서 박스에 담아주세요.";
+    text.innerText = "3개의 원을 드래그해서 박스에 담아주세요.";
     this.section.appendChild(text);
 
     const textBox = document.createElement("div");
@@ -60,8 +60,11 @@ export default function ThirdLevel({ $target, loadPage }) {
         circle.dataset.index = i;
       });
       box.appendChild(circle);
+      circle.onload = function () {
+        container.appendChild(box);
+        container.appendChild(circleBox);
+      }
     });
-    container.appendChild(box);
 
     circleBox.addEventListener("dragover", (e) => {
       e.preventDefault();
@@ -69,22 +72,25 @@ export default function ThirdLevel({ $target, loadPage }) {
 
     circleBox.addEventListener("drop", (e) => {
       e.preventDefault();
-      const draggable = document.querySelector(".dragging");
-      circleBox.appendChild(draggable);
+      const count = document.querySelectorAll(".dropCircle");
+      if (count.length <= 2) {
+        const draggable = document.querySelector(".dragging");
+        draggable.className = "dropCircle"
+        circleBox.appendChild(draggable);
+      }
     });
-    container.appendChild(circleBox);
 
     const button = document.createElement("button");
     button.innerText = "Next";
-    button.addEventListener("click", async () => {
-      const count = document.querySelectorAll(".dragging");
+    button.addEventListener("click", async function () {
+      const count = document.querySelectorAll(".dropCircle");
       const data = {
         level: 3,
         answer: 1,
         info: "틀렸습니다!",
-        message: "박스에 원을 5개 이상 담아주세요."
+        message: "박스에 원을 3개만 담아주세요."
       }
-      if (count.length >= 5) {
+      if (count.length === 3) {
         data.answer = 0;
         data.info = "정답입니다!";
         data.message = "축하합니다. 모든 단계를 완료했습니다.";
