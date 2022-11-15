@@ -2,15 +2,6 @@ import "../css/ThirdLevel.css";
 import "../css/Container.css";
 import Modal from "../components/Modal";
 import Container from "../components/Container";
-import Blue from "../assets/Blue.png";
-import Green from "../assets/Green.png";
-import DarkGreen from "../assets/DarkGreen.png";
-import Grey from "../assets/Grey.png";
-import Orange from "../assets/Orange.png";
-import Pink from "../assets/Pink.png";
-import Yellow from "../assets/Yellow.png";
-import Red from "../assets/Red.png";
-import SkyBlue from "../assets/SkyBlue.png";
 
 export default function ThirdLevel({ $target, loadPage, data }) {
   this.data = data;
@@ -22,7 +13,7 @@ export default function ThirdLevel({ $target, loadPage, data }) {
   this.render = () => {
     this.section.innerHTML = "";
     const loadPage = this.loadPage;
-
+    const circleArray = this.data.circle;
     const data = {
       message: this.data.message,
       text: this.data.text
@@ -35,17 +26,6 @@ export default function ThirdLevel({ $target, loadPage, data }) {
 
     const box = document.createElement("div");
     box.className = "boxContainer";
-    const circleArray = [
-      Red,
-      Pink,
-      Yellow,
-      SkyBlue,
-      Blue,
-      Green,
-      Grey,
-      Orange,
-      DarkGreen,
-    ];
 
     const circleBox = document.createElement("div");
     circleBox.className = "circleBox";
@@ -54,10 +34,25 @@ export default function ThirdLevel({ $target, loadPage, data }) {
       const circle = document.createElement("img");
       circle.src = src;
       circle.className = "circle";
+
       circle.addEventListener("drag", function () {
         circle.classList.add("dragging");
-        circle.dataset.index = i;
       });
+
+      circle.addEventListener("dragend", function () {
+        circle.classList.remove("dragging");
+      })
+
+      circleBox.addEventListener("drop", function (e) {
+        e.preventDefault();
+        const count = document.querySelectorAll(".dropCircle");
+        if (count.length <= 2) {
+          const dropCircle = document.querySelector(".dragging");
+          dropCircle.className = "dropCircle"
+          circleBox.appendChild(dropCircle);
+        }
+      });
+      
       box.appendChild(circle);
       container.appendChild(box);
       circle.onload = function () {
@@ -67,16 +62,6 @@ export default function ThirdLevel({ $target, loadPage, data }) {
 
     circleBox.addEventListener("dragover", function (e) {
       e.preventDefault();
-    });
-
-    circleBox.addEventListener("drop", function (e) {
-      e.preventDefault();
-      const count = document.querySelectorAll(".dropCircle");
-      if (count.length <= 2) {
-        const dropCircle = document.querySelector(".dragging");
-        dropCircle.className = "dropCircle"
-        circleBox.appendChild(dropCircle);
-      }
     });
 
     const button = document.createElement("button");

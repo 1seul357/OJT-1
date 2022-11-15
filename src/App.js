@@ -10,11 +10,20 @@ import Fox from "./assets/Fox.png";
 import Koala from "./assets/Koala.png";
 import Peng from "./assets/Peng.png";
 import Sheep from "./assets/Sheep.png";
+import Blue from "./assets/Blue.png";
+import Green from "./assets/Green.png";
+import DarkGreen from "./assets/DarkGreen.png";
+import Grey from "./assets/Grey.png";
+import Orange from "./assets/Orange.png";
+import Pink from "./assets/Pink.png";
+import Yellow from "./assets/Yellow.png";
+import Red from "./assets/Red.png";
+import SkyBlue from "./assets/SkyBlue.png";
 import "./css/App.css";
 import "../style.css";
 
 export default function App($target) {
-  let level = 1;
+  let level = 3;
   const start = new Date();
 
   const loadPage = () => {
@@ -28,7 +37,7 @@ export default function App($target) {
       new SecondLevel({ $target, loadPage, data });
     }
     if (level === 3) {
-      const data = { text: "3개", message: "의 원을 드래그해서 박스에 담아주세요." };
+      const data = { circle: [Red, Pink, Yellow, SkyBlue, Blue, Green, Grey, Orange, DarkGreen,], text: "3개", message: "의 원을 드래그해서 박스에 담아주세요." };
       new ThirdLevel({ $target, loadPage, data });
     }
     if (level === 4) {
