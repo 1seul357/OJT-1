@@ -59,12 +59,12 @@ export default function ThirdLevel({ $target, loadPage, data }) {
       // circleBox.addEventListener("mouseover", function (e) {
       //   console.log(e);
       // })
-      
+
       box.appendChild(circle);
       container.appendChild(box);
       circle.onload = function () {
         container.appendChild(circleBox);
-      }
+      };
     });
 
     circleBox.addEventListener("dragover", function (e) {
@@ -79,8 +79,8 @@ export default function ThirdLevel({ $target, loadPage, data }) {
         level: 4,
         answer: 1,
         info: "틀렸습니다!",
-        message: "박스에 원을 3개만 담아주세요."
-      }
+        message: "박스에 원을 3개만 담아주세요.",
+      };
       if (count.length === 3) {
         data.answer = 0;
         data.info = "정답입니다!";
@@ -89,7 +89,7 @@ export default function ThirdLevel({ $target, loadPage, data }) {
       const modal = new Modal(data);
       await modal.render();
       loadPage();
-    })
+    });
 
     this.section.appendChild(button);
   };

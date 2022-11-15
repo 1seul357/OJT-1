@@ -1,38 +1,38 @@
-
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.8);;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .modalWrapper {
-    position: absolute;
-    display: flex;
-    top: calc(50vh - 25%); left: calc(50vw - 15%);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    height: 45%;
-    border-radius: 1rem;
-    background-color: white;
-    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.753);
+  position: absolute;
+  display: flex;
+  top: calc(50vh - 25%);
+  left: calc(50vw - 15%);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 45%;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 14px 28px rgba(255, 255, 255, 0.753);
 }
-  
+
 .modalImg {
-    width: 25%;
-    border-radius: 1rem;
+  width: 25%;
+  border-radius: 1rem;
 }
 
 .modalInfo {
-    margin-top: 2rem;
-    font-size: 1.5rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
 }
 
 .modalMessage {
-    margin-top: 1.5rem;
-    font-size: 1.3rem;
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
 }

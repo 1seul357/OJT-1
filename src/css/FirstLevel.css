@@ -1,20 +1,20 @@
 .imgBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
 }
 
 img {
-    width: 10%;
-    margin: 0.3rem;
+  width: 10%;
+  margin: 0.3rem;
 }
 
 img:hover {
-    transform: scale(1.2);
-    cursor: pointer;
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .selectedImg {
-    opacity: 0.5;
+  opacity: 0.5;
 }

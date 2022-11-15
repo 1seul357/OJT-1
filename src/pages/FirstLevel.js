@@ -15,11 +15,11 @@ export default function FirstLevel({ $target, loadPage, data }) {
     const loadPage = this.loadPage;
     const animal = this.data.animal;
     const problemAnswer = this.data.problemAnswer;
-    
+
     const data = {
       message: this.data.message,
       text: this.data.text,
-    }
+    };
     new Container(data);
 
     const box = document.createElement("section");

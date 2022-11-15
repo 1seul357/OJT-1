@@ -1,26 +1,26 @@
 button {
-    background-color: #f15e08;
-    border: none;
-    box-shadow: 5px 5px 5px 1px grey;
-    border-radius: 2rem;
-    width: 7rem;
-    height: 2.5rem;
-    font-size: 1.3rem;
-    color: #ffffff;
-    cursor: pointer;
-    position: absolute;
-    right: 3rem;
-    bottom: 1.7rem;
+  background-color: #f15e08;
+  border: none;
+  box-shadow: 5px 5px 5px 1px grey;
+  border-radius: 2rem;
+  width: 7rem;
+  height: 2.5rem;
+  font-size: 1.3rem;
+  color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+  right: 3rem;
+  bottom: 1.7rem;
 }
 
 button:hover {
-    transform:scale(1.2);
-    cursor: pointer;
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 h3 {
-    font-size: 1.6rem;
-    line-height: 10px;
-    font-weight: 400;
-    text-align: center;
+  font-size: 1.6rem;
+  line-height: 10px;
+  font-weight: 400;
+  text-align: center;
 }

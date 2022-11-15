@@ -15,7 +15,7 @@ export default function SecondLevel({ $target, loadPage, data }) {
     const data = {
       message: this.data.message,
       text: this.data.text,
-    }
+    };
     new Container(data);
 
     const box = document.createElement("section");
