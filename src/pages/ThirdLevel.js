@@ -16,7 +16,7 @@ export default function ThirdLevel({ $target, loadPage, data }) {
     const circleArray = this.data.circle;
     const data = {
       message: this.data.message,
-      text: this.data.text
+      text: this.data.text,
     };
     new Container(data);
 

@@ -14,7 +14,7 @@ export default function SecondLevel({ $target, loadPage, data }) {
     const loadPage = this.loadPage;
     const data = {
       message: this.data.message,
-      text: this.data.text
+      text: this.data.text,
     }
     new Container(data);
 

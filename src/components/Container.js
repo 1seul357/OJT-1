@@ -12,7 +12,7 @@ export default class Container {
         const text = document.createElement("h3");
         const message = document.createElement("h3");
         text.className = "text";
-        text.innerText = this.data.text;
+        text.innerText = this.data.text ? this.data.text : "";
         message.innerText = this.data.message;
     
         const textBox = document.createElement("div");

@@ -15,6 +15,7 @@ export default function FirstLevel({ $target, loadPage, data }) {
     const loadPage = this.loadPage;
     const animal = this.data.animal;
     const problemAnswer = this.data.problemAnswer;
+    
     const data = {
       message: this.data.message,
       text: this.data.text,
@@ -57,9 +58,8 @@ export default function FirstLevel({ $target, loadPage, data }) {
       await modal.render();
       loadPage();
     });
-
-    this.section.appendChild(button);
     this.section.appendChild(box);
+    this.section.appendChild(button);
   };
   this.render();
 }
