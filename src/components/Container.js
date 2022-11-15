@@ -10,15 +10,15 @@ export default class Container {
     }
     render() {
         const text = document.createElement("h3");
-        const text2 = document.createElement("h3");
-        text2.className = "text";
+        const message = document.createElement("h3");
+        text.className = "text";
         text.innerText = this.data.text;
-        text2.innerText = this.data.text2;
+        message.innerText = this.data.message;
     
         const textBox = document.createElement("div");
         textBox.className = "textBox";
-        textBox.appendChild(text2);
         textBox.appendChild(text);
+        textBox.appendChild(message);
         this.section.appendChild(textBox);
     }
 }

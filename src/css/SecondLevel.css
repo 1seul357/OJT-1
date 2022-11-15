@@ -12,7 +12,6 @@
 }
 
 .container:hover {
-  transform: scale(1.1);
   cursor: url(../assets/Pencil.png) 30 100, pointer;
 }
 
@@ -25,6 +24,5 @@
 }
 
 .selectedContainer:hover {
-  transform: scale(1.1);
   cursor: url(../assets/Eraser.png) 30 100, pointer;
 }

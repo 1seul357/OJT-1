@@ -12,7 +12,8 @@ import Yellow from "../assets/Yellow.png";
 import Red from "../assets/Red.png";
 import SkyBlue from "../assets/SkyBlue.png";
 
-export default function ThirdLevel({ $target, loadPage }) {
+export default function ThirdLevel({ $target, loadPage, data }) {
+  this.data = data;
   this.section = document.createElement("section");
   this.section.className = "section";
   this.loadPage = loadPage;
@@ -23,8 +24,8 @@ export default function ThirdLevel({ $target, loadPage }) {
     const loadPage = this.loadPage;
 
     const data = {
-      text: "의 원을 드래그해서 박스에 담아주세요.",
-      text2: "3개"
+      message: this.data.message,
+      text: this.data.text
     };
     new Container(data);
 

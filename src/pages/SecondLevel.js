@@ -2,7 +2,8 @@ import "../css/SecondLevel.css";
 import Modal from "../components/Modal";
 import Container from "../components/Container";
 
-export default function SecondLevel({ $target, loadPage }) {
+export default function SecondLevel({ $target, loadPage, data }) {
+  this.data = data;
   this.section = document.createElement("section");
   this.section.className = "section";
   this.loadPage = loadPage;
@@ -11,10 +12,9 @@ export default function SecondLevel({ $target, loadPage }) {
   this.render = () => {
     this.section.innerHTML = "";
     const loadPage = this.loadPage;
-
     const data = {
-      text: "의 네모 칸을 색칠해주세요.",
-      text2: "7개 이상"
+      message: this.data.message,
+      text: this.data.text
     }
     new Container(data);
 

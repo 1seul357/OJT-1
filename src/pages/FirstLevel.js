@@ -2,16 +2,9 @@ import "../css/FirstLevel.css";
 import "../css/Container.css";
 import Modal from "../components/Modal";
 import Container from "../components/Container";
-import Bear from "../assets/Bear.png";
-import Chick from "../assets/Chick.png";
-import Deer from "../assets/Deer.png";
-import Elephant from "../assets/Elephant.png";
-import Fox from "../assets/Fox.png";
-import Koala from "../assets/Koala.png";
-import Peng from "../assets/Peng.png";
-import Sheep from "../assets/Sheep.png";
 
-export default function FirstLevel({ $target, loadPage }) {
+export default function FirstLevel({ $target, loadPage, data }) {
+  this.data = data;
   this.section = document.createElement("section");
   this.section.className = "section";
   this.loadPage = loadPage;
@@ -20,18 +13,18 @@ export default function FirstLevel({ $target, loadPage }) {
   this.render = () => {
     this.section.innerHTML = "";
     const loadPage = this.loadPage;
+    const animal = this.data.animal;
+    const problemAnswer = this.data.problemAnswer;
     const data = {
-      text: "인 동물을 모두 선택해주세요.",
-      text2: "한 글자"
+      message: this.data.message,
+      text: this.data.text,
     }
     new Container(data);
 
-    const problemAnswer = [2, 3, 6];
-    const imgArray = [Peng, Koala, Bear, Deer, Elephant, Fox, Sheep, Chick];
     const box = document.createElement("section");
     box.className = "imgBox";
 
-    imgArray.forEach((src, i) => {
+    animal.forEach((src, i) => {
       const imgTag = document.createElement("img");
       imgTag.src = src;
       imgTag.addEventListener("click", function () {

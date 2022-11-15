@@ -2,6 +2,14 @@ import FirstLevel from "./pages/FirstLevel";
 import SecondLevel from "./pages/SecondLevel";
 import ThirdLevel from "./pages/ThirdLevel";
 import Success from "./pages/Success";
+import Bear from "./assets/Bear.png";
+import Chick from "./assets/Chick.png";
+import Deer from "./assets/Deer.png";
+import Elephant from "./assets/Elephant.png";
+import Fox from "./assets/Fox.png";
+import Koala from "./assets/Koala.png";
+import Peng from "./assets/Peng.png";
+import Sheep from "./assets/Sheep.png";
 import "./css/App.css";
 import "../style.css";
 
@@ -12,13 +20,16 @@ export default function App($target) {
   const loadPage = () => {
     $target.innerHTML = "";
     if(level === 1) {
-      new FirstLevel({ $target, loadPage })
+      const data = { animal:[Peng, Koala, Bear, Deer, Elephant, Fox, Sheep, Chick], problemAnswer: [2, 3, 6], text: "한 글자", message: "인 동물을 모두 선택해주세요." };
+      new FirstLevel({ $target, loadPage, data });
     };
     if (level == 2) {
-      new SecondLevel({ $target, loadPage });
+      const data = { text: "7개 이상", message: "의 네모 칸을 색칠해주세요." };
+      new SecondLevel({ $target, loadPage, data });
     }
     if (level === 3) {
-      new ThirdLevel({ $target, loadPage });
+      const data = { text: "3개", message: "의 원을 드래그해서 박스에 담아주세요." };
+      new ThirdLevel({ $target, loadPage, data });
     }
     if (level === 4) {
       const end = new Date();
@@ -30,7 +41,6 @@ export default function App($target) {
     }
     level ++;
   };
-  // const data = [{level:1,answer:[1],animal:["bear","chick"],directive:"병아리를 고르세요"},{},{}]
 
   loadPage();
 }
