@@ -48,16 +48,17 @@
   width: 40%;
   height: 20rem;
   background-color: #f15e08;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .dropCircle {
   width: 4.5rem;
   margin: 1rem;
-  animation: 2s ease infinite alternate;
-  animation-name: jump;
+  position: relative;
+  /* animation: 2s ease infinite alternate;
+  animation-name: jump; */
 }
 
 @keyframes jump {
