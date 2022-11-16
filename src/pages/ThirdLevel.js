@@ -17,6 +17,7 @@ export default function ThirdLevel({ $target, loadPage, data }) {
     const data = {
       message: this.data.message,
       text: this.data.text,
+      profile: this.data.profile.img,
     };
     new Container(data);
 
@@ -44,27 +45,25 @@ export default function ThirdLevel({ $target, loadPage, data }) {
         circle.classList.remove("dragging");
       });
 
-      circleBox.addEventListener("drop", function (e) {
-        e.preventDefault();
-        const count = document.querySelectorAll(".dropCircle");
-        if (count.length <= 2) {
-          const dropCircle = document.querySelector(".dragging");
-          dropCircle.className = "dropCircle";
-          // dropCircle.style.left = dropCircle.offsetLeft + e.clientX / 2 + 'px';
-          // dropCircle.style.top = dropCircle.offsetTop + e.clientY / 2 + 'px';
-          circleBox.appendChild(dropCircle);
-        }
-      });
-
-      // circleBox.addEventListener("mouseover", function (e) {
-      //   console.log(e);
-      // })
-
       box.appendChild(circle);
       container.appendChild(box);
       circle.onload = function () {
         container.appendChild(circleBox);
       };
+    });
+
+    circleBox.addEventListener("drop", function (e) {
+      e.preventDefault();
+      const count = document.querySelectorAll(".dropCircle");
+      if (count.length <= 2) {
+        const dropCircle = document.querySelector(".dragging");
+        dropCircle.className = "dropCircle";
+        dropCircle.style.left =
+          e.clientX - circleBox.offsetLeft - dropCircle.clientWidth / 2 + "px";
+        dropCircle.style.top =
+          e.clientY - circleBox.offsetTop - dropCircle.clientHeight / 2 + "px";
+        circleBox.appendChild(dropCircle);
+      }
     });
 
     circleBox.addEventListener("dragover", function (e) {
