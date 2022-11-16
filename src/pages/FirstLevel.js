@@ -3,6 +3,7 @@ import "../css/Container.css";
 import Modal from "../components/Modal";
 import Container from "../components/Container";
 import Button from "../components/Button";
+import Check from "../assets/Check.png";
 
 export default function FirstLevel({ $target, loadPage, data }) {
   this.data = data;
@@ -25,17 +26,33 @@ export default function FirstLevel({ $target, loadPage, data }) {
     box.className = "imgBox";
 
     animal.forEach((src, i) => {
+      const imgContainer = document.createElement("div");
+      imgContainer.className = "imgContainer";
+
       const imgTag = document.createElement("img");
       imgTag.src = src;
+      imgTag.className = "imgTag";
+      imgContainer.appendChild(imgTag);
+
+      const check = document.createElement("img");
+      check.src = Check;
+      imgContainer.appendChild(check);
+      check.className = "unCheck";
+
       imgTag.addEventListener("click", function () {
-        imgTag.dataset.index = i;
-        imgTag.className = imgTag.className ? "" : "selectedImg"; // className이 있으면 "", 없으면 selectedImg로 설정해서 이미지의 opacity 조절
+        imgContainer.dataset.index = i;
+        imgContainer.classList.contains("clickImg")
+          ? imgContainer.classList.remove("clickImg")
+          : imgContainer.classList.add("clickImg");
+        imgContainer.classList.contains("clickImg")
+          ? (check.className = "check")
+          : (check.className = "unCheck");
       });
-      box.appendChild(imgTag);
+      box.appendChild(imgContainer);
     });
 
     const loadModal = async () => {
-      const answer = [...box.querySelectorAll(".selectedImg")].map((el) =>
+      const answer = [...document.querySelectorAll(".clickImg")].map((el) =>
         Number(el.dataset.index)
       );
       const isAnswer =
