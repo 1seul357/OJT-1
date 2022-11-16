@@ -17,7 +17,7 @@ export default class Modal {
     this.modal.appendChild(modalWrapper);
 
     const img = document.createElement("img");
-    img.className = this.data.answer == 0 ? "modalImg" : "modalImg2";
+    img.className = this.data.answer != -1 ? "modalImg" : "modalImg2";
     img.src = this.data.img ? this.data.img : this.data.answer == 0 ? O : X;
 
     const info = document.createElement("h2");

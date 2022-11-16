@@ -9,7 +9,7 @@ export default class Container {
     document.querySelector(".app").appendChild(this.section);
   }
   render() {
-    const container = document.createElement("div");
+    const container = document.createElement("p");
     container.className = "container2";
 
     const profileImage = document.createElement("img");
@@ -24,7 +24,7 @@ export default class Container {
     text.innerText = this.data.text ? this.data.text : "";
     message.innerText = this.data.message;
 
-    const textBox = document.createElement("div");
+    const textBox = document.createElement("p");
     textBox.className = "textBox";
     textBox.appendChild(text);
     textBox.appendChild(message);

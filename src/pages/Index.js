@@ -53,7 +53,7 @@ export default function Index({ $target, loadPage, data }) {
     const loadModal = async () => {
       const name = JSON.parse(LocalStorage.getItem("profile"));
       const data = {
-        answer: 1,
+        answer: -1,
         img: profile.tmp,
         info: "친구를 선택해주세요.",
         message: "함께 학습할 친구를 선택해야 합니다.",
