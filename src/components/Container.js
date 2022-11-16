@@ -9,6 +9,15 @@ export default class Container {
     document.querySelector(".app").appendChild(this.section);
   }
   render() {
+    const container = document.createElement("div");
+    container.className = "container2";
+
+    const profileImage = document.createElement("img");
+    profileImage.src = this.data.profile;
+    profileImage.className = "profileImage";
+
+    this.data.profile ? container.appendChild(profileImage) : "";
+
     const text = document.createElement("h3");
     const message = document.createElement("h3");
     text.className = "text";
@@ -19,6 +28,8 @@ export default class Container {
     textBox.className = "textBox";
     textBox.appendChild(text);
     textBox.appendChild(message);
-    this.section.appendChild(textBox);
+
+    container.appendChild(textBox);
+    this.section.appendChild(container);
   }
 }

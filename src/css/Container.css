@@ -8,13 +8,29 @@
   background-color: #ffffffad;
   border-radius: 2rem;
 }
+.container2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileImage {
+  width: 7rem;
+  box-shadow: 3px 3px 5px 1px grey;
+  margin-right: 2rem;
+}
+
+.profileImage:hover {
+  transform: scale(1);
+}
 
 .textBox {
   display: flex;
   justify-content: center;
   background-color: #ffffff;
   margin-top: 0.5rem;
-  width: 50%;
+  width: 45%;
   height: 3.5rem;
   border-radius: 1rem;
   box-shadow: 3px 3px 5px 1px grey;
