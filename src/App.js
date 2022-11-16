@@ -4,6 +4,7 @@ import SecondLevel from "./pages/SecondLevel";
 import ThirdLevel from "./pages/ThirdLevel";
 import Success from "./pages/Success";
 import LocalStorage from "./util/LocalStorage";
+import Profile from "./assets/Profile.png";
 import Profile1 from "./assets/Profile1.png";
 import Profile2 from "./assets/Profile2.png";
 import Profile3 from "./assets/Profile3.png";
@@ -35,6 +36,7 @@ export default function App($target) {
   this.section = document.createElement("section");
   this.section.className = "section";
   $target.appendChild(this.section);
+  LocalStorage.removeItem("profile");
 
   const loadPage = () => {
     this.section.innerHTML = "";
@@ -42,6 +44,7 @@ export default function App($target) {
     if (level === 0) {
       const data = {
         img: [Profile1, Profile2, Profile3, Profile4, Profile5],
+        tmp: Profile,
         name: {
           정우: false,
           민준: false,

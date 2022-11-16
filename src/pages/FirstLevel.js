@@ -2,6 +2,7 @@ import "../css/FirstLevel.css";
 import "../css/Container.css";
 import Modal from "../components/Modal";
 import Container from "../components/Container";
+import Button from "../components/Button";
 
 export default function FirstLevel({ $target, loadPage, data }) {
   this.data = data;
@@ -33,9 +34,7 @@ export default function FirstLevel({ $target, loadPage, data }) {
       box.appendChild(imgTag);
     });
 
-    const button = document.createElement("button");
-    button.innerText = "Next";
-    button.addEventListener("click", async function () {
+    const loadModal = async () => {
       const answer = [...box.querySelectorAll(".selectedImg")].map((el) =>
         Number(el.dataset.index)
       );
@@ -55,9 +54,11 @@ export default function FirstLevel({ $target, loadPage, data }) {
       const modal = new Modal(data);
       await modal.render();
       loadPage();
-    });
+    };
+
+    new Button($target, loadModal);
+
     this.section.appendChild(box);
-    this.section.appendChild(button);
   };
   this.render();
 }

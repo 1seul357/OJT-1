@@ -1,6 +1,7 @@
 import "../css/ThirdLevel.css";
 import "../css/Container.css";
 import Modal from "../components/Modal";
+import Button from "../components/Button";
 import Container from "../components/Container";
 
 export default function ThirdLevel({ $target, loadPage, data }) {
@@ -67,9 +68,7 @@ export default function ThirdLevel({ $target, loadPage, data }) {
       e.preventDefault();
     });
 
-    const button = document.createElement("button");
-    button.innerText = "Next";
-    button.addEventListener("click", async function () {
+    const loadModal = async () => {
       const count = document.querySelectorAll(".dropCircle");
       const data = {
         level: 4,
@@ -85,9 +84,9 @@ export default function ThirdLevel({ $target, loadPage, data }) {
       const modal = new Modal(data);
       await modal.render();
       loadPage();
-    });
+    };
 
-    this.section.appendChild(button);
+    new Button($target, loadModal);
   };
   this.render();
 }

@@ -3,6 +3,7 @@ import "../css/Index.css";
 import "../css/Container.css";
 import Container from "../components/Container";
 import Modal from "../components/Modal";
+import Button from "../components/Button";
 import LocalStorage from "../util/LocalStorage";
 
 export default function Index({ $target, loadPage, data }) {
@@ -49,21 +50,27 @@ export default function Index({ $target, loadPage, data }) {
       profileBox.appendChild(card);
     });
 
-    const button = document.createElement("button");
-    button.innerText = "Next";
-    button.addEventListener("click", async function () {
+    const loadModal = async () => {
       const name = JSON.parse(LocalStorage.getItem("profile"));
       const data = {
-        answer: 0,
-        img: name.img,
-        info: "선택한 친구 : " + name.name,
-        message: "문제가 시작될 때까지 조금만 기다려주세요.",
+        answer: 1,
+        img: profile.tmp,
+        info: "친구를 선택해주세요.",
+        message: "함께 학습할 친구를 선택해야 합니다.",
       };
+      name
+        ? ((data.img = name.img),
+          (data.answer = 0),
+          (data.info = "선택한 친구 : " + name.name),
+          (data.message = "문제가 시작될 때까지 조금만 기다려주세요."))
+        : data;
       const modal = new Modal(data);
       await modal.render();
       loadPage();
-    });
-    this.section.appendChild(button);
+    };
+
+    new Button($target, loadModal);
+
     this.section.appendChild(profileBox);
   };
   this.render();

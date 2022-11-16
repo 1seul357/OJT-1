@@ -1,5 +1,6 @@
 import "../css/SecondLevel.css";
 import Modal from "../components/Modal";
+import Button from "../components/Button";
 import Container from "../components/Container";
 
 export default function SecondLevel({ $target, loadPage, data }) {
@@ -30,9 +31,7 @@ export default function SecondLevel({ $target, loadPage, data }) {
       box.appendChild(container);
     }
 
-    const button = document.createElement("button");
-    button.innerText = "Next";
-    button.addEventListener("click", async function () {
+    const loadModal = async () => {
       const isAnswer = box.querySelectorAll(".selectedContainer");
       const data = {
         level: 2,
@@ -48,9 +47,10 @@ export default function SecondLevel({ $target, loadPage, data }) {
       const modal = new Modal(data);
       await modal.render();
       loadPage();
-    });
+    };
 
-    this.section.appendChild(button);
+    new Button($target, loadModal);
+
     this.section.appendChild(box);
   };
   this.render();

@@ -12,13 +12,12 @@ export default class Modal {
   }
 
   render() {
-    console.log(this.data.img);
     const modalWrapper = document.createElement("section");
     modalWrapper.className = "modalWrapper";
     this.modal.appendChild(modalWrapper);
 
     const img = document.createElement("img");
-    img.className = "modalImg";
+    img.className = this.data.answer == 0 ? "modalImg" : "modalImg2";
     img.src = this.data.img ? this.data.img : this.data.answer == 0 ? O : X;
 
     const info = document.createElement("h2");

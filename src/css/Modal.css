@@ -27,6 +27,10 @@
   border-radius: 1rem;
 }
 
+.modalImg2 {
+  width: 13%;
+}
+
 .modalInfo {
   margin-top: 2rem;
   font-size: 1.5rem;
