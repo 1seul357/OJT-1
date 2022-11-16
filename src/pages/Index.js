@@ -23,7 +23,7 @@ export default function Index({ $target, loadPage, data }) {
       const img = document.createElement("img");
       const name = document.createElement("h3");
       const card = document.createElement("card");
-      const nameList = ["정우", "민준", "예지", "우찬", "슬기"];
+      const nameList = ["정우", "주희", "예지", "우찬", "슬기"];
 
       card.className = "card";
       img.src = src;
