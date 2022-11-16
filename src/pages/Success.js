@@ -16,8 +16,9 @@ export default function Success({ $target, minute, seconds }) {
     const img = document.createElement("img");
     img.src = Img;
     img.className = "image";
-    this.section.appendChild(message);
+
     this.section.appendChild(img);
+    this.section.appendChild(message);
   };
   this.render();
 }

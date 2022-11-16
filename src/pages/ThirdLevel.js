@@ -21,7 +21,6 @@ export default function ThirdLevel({ $target, loadPage, data }) {
 
     const container = document.createElement("div");
     container.className = "flexContainer";
-    this.section.appendChild(container);
 
     const box = document.createElement("div");
     box.className = "boxContainer";
@@ -44,7 +43,6 @@ export default function ThirdLevel({ $target, loadPage, data }) {
       });
 
       box.appendChild(circle);
-      container.appendChild(box);
       circle.onload = function () {
         container.appendChild(circleBox);
       };
@@ -87,6 +85,9 @@ export default function ThirdLevel({ $target, loadPage, data }) {
     };
 
     new Button($target, loadModal);
+
+    container.appendChild(box);
+    this.section.appendChild(container);
   };
   this.render();
 }

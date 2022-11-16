@@ -10,7 +10,7 @@ import Profile2 from "./assets/Profile2.png";
 import Profile3 from "./assets/Profile3.png";
 import Profile4 from "./assets/Profile4.png";
 import Profile5 from "./assets/Profile5.png";
-import Bear from "./assets/Bear.png";
+import Dog from "./assets/Dog.png";
 import Chick from "./assets/Chick.png";
 import Deer from "./assets/Deer.png";
 import Elephant from "./assets/Elephant.png";
@@ -59,7 +59,7 @@ export default function App($target) {
     if (level === 1) {
       const data = {
         profile,
-        animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Chick, Bear],
+        animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Chick, Dog],
         problemAnswer: [2, 5, 7],
         text: "한 글자",
         message: "인 동물을 모두 선택해주세요.",

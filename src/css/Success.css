@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: column;
+  flex-direction: column-reverse;
   background-color: #ffffffad;
   border-radius: 2rem;
 }
