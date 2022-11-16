@@ -9,7 +9,7 @@ export default class Container {
     document.querySelector(".app").appendChild(this.section);
   }
   render() {
-    const container = document.createElement("p");
+    const container = document.createElement("div");
     container.className = "container2";
 
     const profileImage = document.createElement("img");

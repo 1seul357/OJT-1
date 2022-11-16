@@ -59,8 +59,8 @@ export default function App($target) {
     if (level === 1) {
       const data = {
         profile,
-        animal: [Peng, Koala, Bear, Deer, Elephant, Fox, Sheep, Chick],
-        problemAnswer: [2, 3, 6],
+        animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Chick, Bear],
+        problemAnswer: [2, 5, 7],
         text: "한 글자",
         message: "인 동물을 모두 선택해주세요.",
       };

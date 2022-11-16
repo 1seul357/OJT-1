@@ -5,12 +5,8 @@
   margin: 1rem;
 }
 
-img {
-  width: 100%;
-}
-
 .imgTag {
-  height: 7rem;
+  height: 90%;
 }
 
 img:hover {
@@ -19,8 +15,8 @@ img:hover {
 }
 
 .imgContainer {
-  width: 7.5rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   margin: 0.3rem;
   display: flex;
   flex-direction: column-reverse;

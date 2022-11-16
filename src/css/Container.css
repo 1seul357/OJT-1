@@ -1,5 +1,5 @@
 .container2 {
-  width: 100%;
+  width: 100rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,9 +7,7 @@
 
 .profileImage {
   width: 7rem;
-  border-radius: 100%;
   margin-right: 2rem;
-  box-shadow: 5px 5px 7px 1px grey;
 }
 
 .profileImage:hover {

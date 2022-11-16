@@ -1,6 +1,11 @@
 import "../css/Container.css";
 import "../css/Index.css";
 import "../css/Container.css";
+import ProfileImg1 from "../assets/ProfileImg1.png";
+import ProfileImg2 from "../assets/ProfileImg2.png";
+import ProfileImg3 from "../assets/ProfileImg3.png";
+import ProfileImg4 from "../assets/ProfileImg4.png";
+import ProfileImg5 from "../assets/ProfileImg5.png";
 import Container from "../components/Container";
 import Modal from "../components/Modal";
 import Button from "../components/Button";
@@ -23,7 +28,7 @@ export default function Index({ $target, loadPage, data }) {
       const img = document.createElement("img");
       const name = document.createElement("h3");
       const card = document.createElement("card");
-      const nameList = ["정우", "주희", "예지", "우찬", "슬기"];
+      const nameList = ["정우", "민준", "예지", "우찬", "슬기"];
 
       card.className = "card";
       img.src = src;
@@ -40,6 +45,16 @@ export default function Index({ $target, loadPage, data }) {
         );
         card.className =
           profile.name[nameList[i]] == true ? "selectedProfile" : "card";
+        src =
+          i == 0
+            ? ProfileImg1
+            : i == 1
+            ? ProfileImg2
+            : i == 2
+            ? ProfileImg3
+            : i == 3
+            ? ProfileImg4
+            : ProfileImg5;
         LocalStorage.setItem(
           "profile",
           JSON.stringify({ name: nameList[i], img: src })
