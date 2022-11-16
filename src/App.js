@@ -32,9 +32,12 @@ import "../style.css";
 export default function App($target) {
   let level = 0;
   const start = new Date();
+  this.section = document.createElement("section");
+  this.section.className = "section";
+  $target.appendChild(this.section);
 
   const loadPage = () => {
-    $target.innerHTML = "";
+    this.section.innerHTML = "";
     const profile = JSON.parse(LocalStorage.getItem("profile"));
     if (level === 0) {
       const data = {

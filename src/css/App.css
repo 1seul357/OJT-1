@@ -1,3 +1,14 @@
+.section {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #ffffffad;
+  border-radius: 2rem;
+}
+
 button {
   background-color: #f15e08;
   border: none;

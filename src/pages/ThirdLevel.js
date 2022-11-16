@@ -5,13 +5,10 @@ import Container from "../components/Container";
 
 export default function ThirdLevel({ $target, loadPage, data }) {
   this.data = data;
-  this.section = document.createElement("section");
-  this.section.className = "section";
+  this.section = $target.querySelector("section");
   this.loadPage = loadPage;
-  $target.appendChild(this.section);
 
   this.render = () => {
-    this.section.innerHTML = "";
     const loadPage = this.loadPage;
     const circleArray = this.data.circle;
     const data = {
@@ -78,7 +75,7 @@ export default function ThirdLevel({ $target, loadPage, data }) {
         level: 4,
         answer: 1,
         info: "틀렸습니다!",
-        message: "박스에 원을 3개만 담아주세요.",
+        message: "박스에 3개의 원을 담아주세요.",
       };
       if (count.length === 3) {
         data.answer = 0;

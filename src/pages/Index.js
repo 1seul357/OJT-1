@@ -7,13 +7,10 @@ import LocalStorage from "../util/LocalStorage";
 
 export default function Index({ $target, loadPage, data }) {
   this.data = data;
-  this.section = document.createElement("section");
-  this.section.className = "section";
+  this.section = $target.querySelector(".section");
   this.loadPage = loadPage;
-  $target.appendChild(this.section);
 
   this.render = () => {
-    this.section.innerHTML = "";
     const loadPage = this.loadPage;
     const profile = this.data;
     const profileBox = document.createElement("section");
