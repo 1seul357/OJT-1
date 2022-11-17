@@ -36,11 +36,13 @@ export default function App($target) {
   this.section = document.createElement("section");
   this.section.className = "section";
   $target.appendChild(this.section);
-  LocalStorage.removeItem("profile");
 
   const loadPage = () => {
     this.section.innerHTML = "";
     const profile = JSON.parse(LocalStorage.getItem("profile"));
+    if (level === 0) {
+      level = profile === null ? 0 : 1;
+    }
     if (level === 0) {
       const data = {
         img: [Profile1, Profile2, Profile3, Profile4, Profile5],

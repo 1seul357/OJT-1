@@ -7,8 +7,4 @@ function setItem(key, value) {
   localStorage.setItem(key, value);
 }
 
-function removeItem(key) {
-  localStorage.removeItem(key);
-}
-
-export default { getItem, setItem, removeItem };
+export default { getItem, setItem };

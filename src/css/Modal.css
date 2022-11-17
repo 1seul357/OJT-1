@@ -31,6 +31,14 @@
   width: 13%;
 }
 
+.modalImg:hover {
+  transform: scale(1);
+}
+
+.modalImg2:hover {
+  transform: scale(1);
+}
+
 .modalInfo {
   margin-top: 2rem;
   font-size: 1.5rem;
