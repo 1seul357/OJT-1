@@ -4,12 +4,15 @@ import Modal from "../components/Modal";
 import Button from "../components/Button";
 import Container from "../components/Container";
 
-export default function ThirdLevel({ $target, loadPage, data }) {
-  this.data = data;
-  this.section = $target.querySelector("section");
-  this.loadPage = loadPage;
+export default class ThirdLevel {
+  constructor({ $target, loadPage, data }) {
+    this.data = data;
+    this.section = $target.querySelector("section");
+    this.loadPage = loadPage;
+    this.render();
+  }
 
-  this.render = () => {
+  render() {
     const loadPage = this.loadPage;
     const circleArray = this.data.circle;
     const data = {
@@ -84,10 +87,9 @@ export default function ThirdLevel({ $target, loadPage, data }) {
       loadPage();
     };
 
-    new Button($target, loadModal);
+    new Button(loadModal);
 
     container.appendChild(box);
     this.section.appendChild(container);
-  };
-  this.render();
+  }
 }

@@ -3,12 +3,15 @@ import Modal from "../components/Modal";
 import Button from "../components/Button";
 import Container from "../components/Container";
 
-export default function SecondLevel({ $target, loadPage, data }) {
-  this.data = data;
-  this.section = $target.querySelector(".section");
-  this.loadPage = loadPage;
+export default class SecondLevel {
+  constructor({ $target, loadPage, data }) {
+    this.data = data;
+    this.section = $target.querySelector(".section");
+    this.loadPage = loadPage;
+    this.render();
+  }
 
-  this.render = () => {
+  render() {
     const loadPage = this.loadPage;
     const data = {
       message: this.data.message,
@@ -49,9 +52,8 @@ export default function SecondLevel({ $target, loadPage, data }) {
       loadPage();
     };
 
-    new Button($target, loadModal);
+    new Button(loadModal);
 
     this.section.appendChild(box);
-  };
-  this.render();
+  }
 }

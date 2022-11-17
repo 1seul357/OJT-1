@@ -11,12 +11,15 @@ import Modal from "../components/Modal";
 import Button from "../components/Button";
 import LocalStorage from "../util/LocalStorage";
 
-export default function Index({ $target, loadPage, data }) {
-  this.data = data;
-  this.section = $target.querySelector(".section");
-  this.loadPage = loadPage;
+export default class Index {
+  constructor({ $target, loadPage, data }) {
+    this.data = data;
+    this.section = $target.querySelector(".section");
+    this.loadPage = loadPage;
+    this.render();
+  }
 
-  this.render = () => {
+  render() {
     const loadPage = this.loadPage;
     const profile = this.data;
     const profileBox = document.createElement("section");
@@ -84,9 +87,8 @@ export default function Index({ $target, loadPage, data }) {
       loadPage();
     };
 
-    new Button($target, loadModal);
+    new Button(loadModal);
 
     this.section.appendChild(profileBox);
-  };
-  this.render();
+  }
 }

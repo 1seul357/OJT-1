@@ -30,81 +30,82 @@ import SkyBlue from "./assets/SkyBlue.png";
 import "./css/App.css";
 import "../style.css";
 
-export default function App($target) {
-  let level = 0;
-  const start = new Date();
-  this.section = document.createElement("section");
-  this.section.className = "section";
-  $target.appendChild(this.section);
+export default class App {
+  constructor($target) {
+    this.section = document.createElement("section");
+    this.section.className = "section";
+    $target.appendChild(this.section);
 
-  const loadPage = () => {
-    this.section.innerHTML = "";
-    const profile = JSON.parse(LocalStorage.getItem("profile"));
-    if (level === 0) {
-      level = profile === null ? 0 : 1;
-    }
-    if (level === 0) {
-      const data = {
-        img: [Profile1, Profile2, Profile3, Profile4, Profile5],
-        tmp: Profile,
-        name: {
-          정우: false,
-          민준: false,
-          예지: false,
-          우찬: false,
-          슬기: false,
-        },
-        message: "함께 학습을 진행할 친구를 골라주세요.",
-      };
-      new Index({ $target, loadPage, data });
-    }
-    if (level === 1) {
-      const data = {
-        profile,
-        animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Chick, Dog],
-        problemAnswer: [2, 5, 7],
-        text: "한 글자",
-        message: "인 동물을 모두 선택해주세요.",
-      };
-      new FirstLevel({ $target, loadPage, data });
-    }
-    if (level == 2) {
-      const data = {
-        profile,
-        text: "7개 이상",
-        message: "의 네모 칸을 색칠해주세요.",
-      };
-      new SecondLevel({ $target, loadPage, data });
-    }
-    if (level === 3) {
-      const data = {
-        profile,
-        circle: [
-          Red,
-          Pink,
-          Yellow,
-          SkyBlue,
-          Blue,
-          Green,
-          Grey,
-          Orange,
-          DarkGreen,
-        ],
-        text: "3개",
-        message: "의 원을 드래그해서 박스에 담아주세요.",
-      };
-      new ThirdLevel({ $target, loadPage, data });
-    }
-    if (level === 4) {
-      const end = new Date();
-      let time = end - start;
-      const minute = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((time % (1000 * 60)) / 1000);
+    let level = 0;
+    const start = new Date();
+    const loadPage = () => {
+      this.section.innerHTML = "";
+      const profile = JSON.parse(LocalStorage.getItem("profile"));
+      if (level === 0) {
+        level = profile === null ? 0 : 1;
+      }
+      if (level === 0) {
+        const data = {
+          img: [Profile1, Profile2, Profile3, Profile4, Profile5],
+          tmp: Profile,
+          name: {
+            정우: false,
+            민준: false,
+            예지: false,
+            우찬: false,
+            슬기: false,
+          },
+          message: "함께 학습을 진행할 친구를 골라주세요.",
+        };
+        new Index({ $target, loadPage, data });
+      }
+      if (level === 1) {
+        const data = {
+          profile,
+          animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Chick, Dog],
+          problemAnswer: [2, 5, 7],
+          text: "한 글자",
+          message: "인 동물을 모두 선택해주세요.",
+        };
+        new FirstLevel({ $target, loadPage, data });
+      }
+      if (level == 2) {
+        const data = {
+          profile,
+          text: "7개 이상",
+          message: "의 네모 칸을 색칠해주세요.",
+        };
+        new SecondLevel({ $target, loadPage, data });
+      }
+      if (level === 3) {
+        const data = {
+          profile,
+          circle: [
+            Red,
+            Pink,
+            Yellow,
+            SkyBlue,
+            Blue,
+            Green,
+            Grey,
+            Orange,
+            DarkGreen,
+          ],
+          text: "3개",
+          message: "의 원을 드래그해서 박스에 담아주세요.",
+        };
+        new ThirdLevel({ $target, loadPage, data });
+      }
+      if (level === 4) {
+        const end = new Date();
+        let time = end - start;
+        const minute = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((time % (1000 * 60)) / 1000);
 
-      new Success({ $target, loadPage, minute, seconds });
-    }
-    level++;
-  };
-
-  loadPage();
+        new Success({ $target, loadPage, minute, seconds });
+      }
+      level++;
+    };
+    loadPage();
+  }
 }

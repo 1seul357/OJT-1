@@ -1,6 +1,6 @@
 export default class Button {
-  constructor($target, loadModal) {
-    this.section = $target.querySelector("section");
+  constructor(loadModal) {
+    this.section = document.querySelector("section");
     this.loadModal = loadModal;
     this.render();
   }

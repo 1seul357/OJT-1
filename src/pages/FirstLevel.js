@@ -5,12 +5,15 @@ import Container from "../components/Container";
 import Button from "../components/Button";
 import Check from "../assets/Check.png";
 
-export default function FirstLevel({ $target, loadPage, data }) {
-  this.data = data;
-  this.section = $target.querySelector(".section");
-  this.loadPage = loadPage;
+export default class FirstLevel {
+  constructor({ $target, loadPage, data }) {
+    this.data = data;
+    this.section = $target.querySelector(".section");
+    this.loadPage = loadPage;
+    this.render();
+  }
 
-  this.render = () => {
+  render() {
     const loadPage = this.loadPage;
     const animal = this.data.animal;
     const problemAnswer = this.data.problemAnswer;
@@ -73,9 +76,8 @@ export default function FirstLevel({ $target, loadPage, data }) {
       loadPage();
     };
 
-    new Button($target, loadModal);
+    new Button(loadModal);
 
     this.section.appendChild(box);
-  };
-  this.render();
+  }
 }
