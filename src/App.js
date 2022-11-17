@@ -25,30 +25,36 @@ import SkyBlue from './assets/SkyBlue.png';
 import './css/App.css';
 import '../style.css';
 const metaData = [
-    {
-        level: 1,
-        animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Chick, Dog],
-        problemAnswer: [2, 5, 7],
-        text: '한 글자',
-        message: '인 동물을 모두 선택해주세요.'
-    },
-    {
-        level: 1,
-        animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Dog, Chick],
-        problemAnswer: [2, 5, 6],
-        text: '한 글자',
-        message: '인 동물을 모두 선택해주세요.'
-    },
-    {
-        level: 2,
-        text: '7개 이상',
-        message: '의 네모 칸을 색칠해주세요.'
-    },
+    // {
+    //     level: 1,
+    //     animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Chick, Dog],
+    //     problemAnswer: [2, 5, 7],
+    //     directive: [{ text: '한 글자', className: 'text' }, { text: '인 동물을 모두 선택해주세요.' }],
+    //     rightMessage: '한 글자인 동물은 양, 개, 말 모두 세 마리입니다.',
+    //     wrongMessage: '세 마리의 동물을 선택해야 합니다.'
+    // },
+    // {
+    //     level: 1,
+    //     animal: [Peng, Koala, Deer, Elephant, Fox, Sheep, Dog, Chick],
+    //     problemAnswer: [2, 5, 6],
+    //     directive: [{ text: '한 글자', className: 'text' }, { text: '인 동물을 모두 선택해주세요.' }],
+    //     rightMessage: '한 글자인 동물은 양, 개, 말 모두 세 마리입니다.',
+    //     wrongMessage: '세 마리의 동물을 선택해야 합니다.'
+    // },
+    // {
+    //     level: 2,
+    //     count: 10,
+    //     directive: [{ text: '10개 이상', className: 'text' }, { text: '의 네모 칸을 색칠해주세요.' }],
+    //     rightMessage: '다음 단계로 넘어갈 때까지 기다려주세요.',
+    //     wrongMessage: '10개 이상 색칠해주세요.'
+    // },
     {
         level: 3,
+        count: 4,
         circle: [Red, Pink, Yellow, SkyBlue, Blue, Green, Grey, Orange, DarkGreen],
-        text: '3개',
-        message: '의 원을 드래그해서 박스에 담아주세요.'
+        directive: [{ text: '4개', className: 'text' }, { text: '의 원을 드래그해서 박스에 담아주세요.' }],
+        rightMessage: '모든 단계를 완료했습니다.',
+        wrongMessage: '박스에 4개의 원을 담아주세요.'
     }
 ];
 const Components = [FirstLevel, SecondLevel, ThirdLevel];
