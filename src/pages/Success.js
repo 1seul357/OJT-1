@@ -13,7 +13,6 @@ export default class Success {
     }
 
     render() {
-        createElement('img').src(Img).addClass('image').appendTo(this.section);
         createElement('h3')
             .innerText(
                 '축하합니다! 모든 단계를 완료했습니다.\n\n\n\n\n\n 문제를 푸는데 걸리는 시간은 총 ' +
@@ -22,5 +21,6 @@ export default class Success {
                     '초입니다.'
             )
             .appendTo(this.section);
+        createElement('img').src(Img).addClass('image').appendTo(this.section);
     }
 }
