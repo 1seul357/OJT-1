@@ -1,31 +1,28 @@
 import '../css/SecondLevel.css';
 import Container from '../components/Container';
 import { makeSubmitButton } from '../util/util';
+import Element, { createElement } from '../util/Element';
 
 export default class SecondLevel {
     constructor({ $target, data }) {
         this.data = data;
-        this.section = $target.querySelector('.section');
+        this.section = new Element($target.querySelector('.section'));
     }
 
     render() {
         const data = this.data;
         new Container(data.directive);
 
-        const box = document.createElement('section');
-        box.className = 'box';
+        const box = createElement('section').addClass('box').appendTo(this.section);
         for (let index = 0; index < 14; index++) {
-            const container = document.createElement('div');
-            container.className = 'container';
-            container.addEventListener('click', function () {
-                container.className = container.className === 'container' ? 'selectedContainer' : 'container';
-            });
-            box.appendChild(container);
+            const container = createElement('div')
+                .addClass('container')
+                .on('click', () => container.toggleClass('container').toggleClass('selectedContainer'))
+                .appendTo(box);
         }
 
-        this.section.appendChild(box);
         return makeSubmitButton(
-            () => box.querySelectorAll('.selectedContainer').length >= data.count,
+            () => box.selectAll('.selectedContainer').length >= data.count,
             data.rightMessage,
             data.wrongMessage
         );

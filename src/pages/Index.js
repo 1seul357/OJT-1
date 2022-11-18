@@ -16,6 +16,8 @@ import Container from '../components/Container';
 import Modal from '../components/Modal';
 import Button from '../components/Button';
 import LocalStorage from '../util/LocalStorage';
+import Element, { createElement } from '../util/Element';
+import { makeSubmitButton } from '../util/util';
 
 export default class Index {
     constructor({ $target }) {
@@ -29,55 +31,40 @@ export default class Index {
                 우찬: false,
                 슬기: false
             },
-            message: '함께 학습을 진행할 친구를 골라주세요.'
+            directive: [{ text: '함께 학습을 진행할 친구를 골라주세요.' }]
         };
-        this.section = $target.querySelector('.section');
+        this.section = new Element($target.querySelector('.section'));
     }
 
     render() {
         const profileSrc = JSON.parse(LocalStorage.getItem('profile'))?.img;
 
         if (profileSrc) return;
-        const profile = this.data;
-        const profileBox = document.createElement('section');
-        profileBox.className = 'profileBox';
 
-        new Container(profile);
+        const profile = this.data;
+        const profileBox = createElement('section').addClass('profileBox').appendTo(this.section);
+
+        new Container(profile.directive);
 
         profile.img.forEach((src, i) => {
-            const img = document.createElement('img');
-            const name = document.createElement('h3');
-            const card = document.createElement('card');
             const nameList = ['정우', '민준', '예지', '우찬', '슬기'];
 
-            card.className = 'card';
-            img.src = src;
-            img.className = 'profileImg';
-            name.innerText = nameList[i];
+            const card = createElement('card')
+                .addClass('card')
+                .on('click', () => {
+                    const selectProfiles = new Element(document.querySelector('.selectedProfile'));
+                    if (selectProfiles) selectProfiles.addClass('card');
+                    nameList.map(el => (el != nameList[i] ? (profile.name[el] = false) : (profile.name[el] = true)));
+                    // card.className = profile.name[nameList[i]] == true ? 'selectedProfile' : 'card';
+                    if (profile.name[nameList[i]]) card.removeClass('card').addClass('selectedProfile');
+                    src = [ProfileImg1, ProfileImg2, ProfileImg3, ProfileImg4, ProfileImg5][i];
 
-            card.addEventListener('click', function () {
-                const selectProfiles = document.querySelector('.selectedProfile');
-                selectProfiles ? (selectProfiles.className = 'card') : null;
-                nameList.map(el => (el != nameList[i] ? (profile.name[el] = false) : (profile.name[el] = true)));
-                card.className = profile.name[nameList[i]] == true ? 'selectedProfile' : 'card';
-                src =
-                    i == 0
-                        ? ProfileImg1
-                        : i == 1
-                        ? ProfileImg2
-                        : i == 2
-                        ? ProfileImg3
-                        : i == 3
-                        ? ProfileImg4
-                        : ProfileImg5;
-                LocalStorage.setItem('profile', JSON.stringify({ name: nameList[i], img: src }));
-            });
-            card.appendChild(img);
-            card.appendChild(name);
-            profileBox.appendChild(card);
+                    LocalStorage.setItem('profile', JSON.stringify({ name: nameList[i], img: src }));
+                })
+                .appendTo(profileBox);
+            createElement('img').src(src).addClass('profileImg').appendTo(card);
+            createElement('h3').innerText(nameList[i]).appendTo(card);
         });
-
-        this.section.appendChild(profileBox);
         return new Promise(resolve => {
             const loadModal = async () => {
                 const name = JSON.parse(LocalStorage.getItem('profile'));
@@ -87,12 +74,12 @@ export default class Index {
                     info: '친구를 선택해주세요.',
                     message: '함께 학습할 친구를 선택해야 합니다.'
                 };
-                name
-                    ? ((data.img = name.img),
-                      (data.answer = 0),
-                      (data.info = '선택한 친구 : ' + name.name),
-                      (data.message = '문제가 시작될 때까지 조금만 기다려주세요.'))
-                    : data;
+                if (name) {
+                    data.img = name.img;
+                    data.answer = true;
+                    data.info = '선택한 친구 : ' + name.name;
+                    data.message = '문제가 시작될 때까지 조금만 기다려주세요.';
+                }
                 const modal = new Modal(data);
                 await modal.render();
                 resolve();

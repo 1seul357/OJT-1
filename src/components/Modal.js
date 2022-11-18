@@ -1,43 +1,32 @@
 import '../css/Modal.css';
 import O from '../assets/O.png';
 import X from '../assets/X.png';
+import Element, { createElement } from '../util/Element';
 
 export default class Modal {
     constructor(data) {
         this.data = data;
-        this.modal = document.createElement('section');
-        this.modal.className = 'modal';
+        this.modal = createElement('section').addClass('modal');
         this.render();
-        document.querySelector('.app').appendChild(this.modal);
+        new Element(document.querySelector('.app')).append(this.modal);
     }
 
     render() {
-        const modalWrapper = document.createElement('section');
-        modalWrapper.className = 'modalWrapper';
-        this.modal.appendChild(modalWrapper);
-
-        const img = document.createElement('img');
-        img.className = 'modalImg';
-        img.src = this.data.answer ? O : X;
-
-        const info = document.createElement('h2');
-        info.innerText = this.data.answer ? '정답입니다!' : '틀렸습니다!';
-        info.className = 'modalInfo';
-
-        const message = document.createElement('h3');
-        message.innerText = this.data.message;
-        message.className = 'modalMessage';
-
-        img.onload = function () {
-            modalWrapper.appendChild(img);
-            modalWrapper.appendChild(info);
-            modalWrapper.appendChild(message);
-        };
+        const modalWrapper = createElement('section').addClass('modalWrapper').appendTo(this.modal);
+        console.log(this.data.info ?? (this.data.answer ? '정답입니다!' : '틀렸습니다!'));
+        const info = createElement('h2')
+            .innerText(this.data.info ?? (this.data.answer ? '정답입니다!' : '틀렸습니다!'))
+            .addClass('modalInfo');
+        const message = createElement('h3').innerText(this.data.message).addClass('modalMessage');
+        const img = createElement('img')
+            .addClass(this.data.answer !== -1 ? 'modalImg' : 'modalImg2')
+            .src(this.data.img ?? (this.data.answer ? O : X))
+            .on('load', () => modalWrapper.append(img).append(info).append(message));
 
         return new Promise(resolve => {
             setTimeout(() => {
                 this.modal.remove();
-                if (this.data.answer) {
+                if (this.data.answer === true) {
                     resolve();
                 }
             }, 2000);

@@ -2,11 +2,12 @@ import '../css/ThirdLevel.css';
 import '../css/Container.css';
 import Container from '../components/Container';
 import { makeSubmitButton } from '../util/util';
+import Element, { createElement } from '../util/Element';
 
 export default class ThirdLevel {
     constructor({ $target, data }) {
         this.data = data;
-        this.section = $target.querySelector('section');
+        this.section = new Element($target.querySelector('section'));
     }
 
     render() {
@@ -14,53 +15,42 @@ export default class ThirdLevel {
         const data = this.data;
         new Container(data.directive);
 
-        const container = document.createElement('div');
-        container.className = 'flexContainer';
+        const container = createElement('div').addClass('flexContainer');
 
-        const box = document.createElement('div');
-        box.className = 'boxContainer';
+        const box = createElement('div').addClass('boxContainer');
 
-        const circleBox = document.createElement('div');
-        circleBox.className = 'circleBox';
+        const circleBox = createElement('div').addClass('circleBox');
 
         circleArray.forEach((src, i) => {
-            const circle = document.createElement('img');
-            circle.src = src;
-            circle.className = 'circle';
-
-            circle.addEventListener('drag', function (e) {
-                e.preventDefault();
-                circle.classList.add('dragging');
-            });
-
-            circle.addEventListener('dragend', function () {
-                circle.classList.remove('dragging');
-            });
-
-            box.appendChild(circle);
-            circle.onload = function () {
-                container.appendChild(circleBox);
-            };
+            const circle = createElement('img')
+                .src(src)
+                .addClass('circle')
+                .on('drag', e => {
+                    e.preventDefault();
+                    circle.addClass('dragging');
+                })
+                .on('dragend', () => circle.removeClass('dragging'))
+                .on('load', () => container.append(circleBox))
+                .appendTo(box);
         });
 
-        circleBox.addEventListener('drop', function (e) {
+        circleBox.on('drop', e => {
             e.preventDefault();
             const count = document.querySelectorAll('.dropCircle');
             if (count.length < data.count) {
                 const dropCircle = document.querySelector('.dragging');
                 dropCircle.className = 'dropCircle';
-                dropCircle.style.left = e.clientX - circleBox.offsetLeft - dropCircle.clientWidth / 2 + 'px';
-                dropCircle.style.top = e.clientY - circleBox.offsetTop - dropCircle.clientHeight / 2 + 'px';
-                circleBox.appendChild(dropCircle);
+                dropCircle.style.left = e.clientX - circleBox.node.offsetLeft - dropCircle.clientWidth / 2 + 'px';
+                dropCircle.style.top = e.clientY - circleBox.node.offsetTop - dropCircle.clientHeight / 2 + 'px';
+                circleBox.append(new Element(dropCircle));
             }
         });
 
-        circleBox.addEventListener('dragover', function (e) {
+        circleBox.on('dragover', function (e) {
             e.preventDefault();
         });
 
-        container.appendChild(box);
-        this.section.appendChild(container);
+        container.append(box).appendTo(this.section);
         return makeSubmitButton(
             () => document.querySelectorAll('.dropCircle').length === data.count,
             data.rightMessage,
