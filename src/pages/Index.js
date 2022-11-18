@@ -53,7 +53,7 @@ export default class Index {
                 .addClass('card')
                 .on('click', () => {
                     const selectProfiles = new Element(document.querySelector('.selectedProfile'));
-                    if (selectProfiles) selectProfiles.addClass('card');
+                    if (selectProfiles) selectProfiles.removeClass("selectedProfile").addClass("card");
                     nameList.map(el => (el != nameList[i] ? (profile.name[el] = false) : (profile.name[el] = true)));
                     // card.className = profile.name[nameList[i]] == true ? 'selectedProfile' : 'card';
                     if (profile.name[nameList[i]]) card.removeClass('card').addClass('selectedProfile');
