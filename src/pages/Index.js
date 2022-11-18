@@ -42,10 +42,10 @@ export default class Index {
         if (profileSrc) return;
 
         const profile = this.data;
-        const profileBox = createElement('section').addClass('profileBox').appendTo(this.section);
-
         new Container(profile.directive);
 
+        const profileBox = createElement('section').addClass('profileBox').appendTo(this.section);
+        
         profile.img.forEach((src, i) => {
             const nameList = ['정우', '민준', '예지', '우찬', '슬기'];
 
